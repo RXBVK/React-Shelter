@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/77886c9a74.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
+    />
+    <link
+      rel="icon"
+      href="Images/favicon.ico"
+      type="image/x-icon"
+      sizes="16x16"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-style.css" />
+    <title>Schronisko dla Bezdomnych Zwierząt we Wrocławiu</title>
+  </head>
+
+  <body id="light-mode">
+    <div id="navbar-wrap"></div>
+    <div
+      class="collapse position-fixed w-100 mobileMenuWrap"
+      id="navbarToggleExternalContent"
+    >
+      <div class="mobileMenu">
+        <ol class="list-unstyled font-weight-bold">
+          <li>
+            <a href="adopcja.html" id="menu1">Adopcja</a>
+          </li>
+          <li>
+            <a href="zwierzeta.html" id="menu2">Zwierzeta</a>
+          </li>
+          <li>
+            <a href="pomoc.html" id="menu3">Jak pomóc</a>
+          </li>
+          <li>
+            <a href="kampanie.html" id="menu4">Kampanie</a>
+          </li>
+          <li>
+            <a href="kontakt.html" id="menu5">Kontakt</a>
+          </li>
+        </ol>
+        <div class="dropdown">
+          <i
+            class="fas fa-cog fa-2x"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          ></i>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <form>
+              <div class="settings dropdown-item ">
+                <div id="language">
+                  <p onclick="changeLangPl()" id="pl">PL</p>
+                  <p onclick="changeLangEn()" id="en">EN</p>
+                </div>
+                <div class="custom-control custom-switch" id="switch">
+                  <!--<input
+                    type="checkbox"
+                    id="switch"
+                    onclick="nightMode()"
+                  /><label for="switch">Tryb nocny</label>
+                  <p id="savedDayTime">Dzień</p>-->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="gradient-wrap"></div>
+    <div id="white-wrap"></div>
+    <div id="adopt-wrap"></div>
+    <div id="footer-wrap"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="bootstrap-edit.js"></script>
+  </body>
+</html>

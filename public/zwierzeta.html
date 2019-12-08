@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" sizes="16x16">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap" rel="stylesheet">
+    <title> Galeria zwierząt </title>
+</head>
+
+<body>
+    <div id="banner" class="scrolled">
+        <div class="banner-logo" id="banner-logo">
+            <a href="index.html"><img src="Images/logo-header3.png"></a>
+        </div>
+        <div class="banner-menu">
+            <ol>
+                <li><a href="adopcja.html">Adopcja</a>
+                    <ul>
+                        <li><a href="poradnik.html">Poradnik</a></li>
+                        <li><a href="koszty.html">Koszty</a></li>
+                        <li><a href="warunki.html">Warunki</a></li>
+                    </ul>
+                </li>
+                <li><a href="zwierzeta.html">Zwierzeta</a>
+                    <ul>
+                        <li><a href="listazwierzat.html">Lista zwierząt</a></li>
+                    </ul>
+                </li>
+                <li><a href="pomoc.html">Jak pomóc</a>
+                    <ul>
+                        <li><a href="pomocmat.html">Pomoc materialna</a></li>
+                        <li><a href="pomocfin.html">Pomoc finansowa</a></li>
+                        <li><a href="wolontariat.html">Wolontariat</a></li>
+                    </ul>
+                </li>
+                <li><a href="kampanie.html">Kampanie</a>
+                    <ul>
+                        <li><a href="mydoroslepsy.html">"My, dorosłe psy"</a></li>
+                        <li><a href="niewidzialni.html">"Niewidzialni"</a></li>
+                        <li><a href="zeschronu.html">"Druga połówka"</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                    <div id="opcje">
+                        <input type="checkbox" id="switch" onclick="nightMode()"><label for="switch">Tryb nocny</label>
+                        <p id="savedDayTime">Dzień</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div id="display-wrap" onclick="closeDisplay()">
+    </div>
+    <div class="zwierzeta-header">
+        <div class="zwierzeta-header-content">
+            Galeria zwierząt
+        </div>
+    </div>
+    <div class="filter">
+        <div class="filter-content">
+            <div class="filter-options">
+                Psy <input type="checkbox" id="dogs" onclick="handleFiltering()">
+                Koty <input type="checkbox" id="cats" onclick="handleFiltering()">
+            </div>
+            <div class="search">
+                Wpisz imię: <input type="text" id="imie">
+            </div>
+        </div>
+    </div>
+    <div class="zwierzeta-gallery" id="gallery"></div>
+    <script>
+        const myAnimals = [{
+                name: "Molly",
+                type: "cat",
+                age: "3",
+                imagePath: "Images/1.jpg",
+            },
+            {
+                name: "Goofy",
+                type: "dog",
+                age: "7",
+                imagePath: "Images/2.jpg"
+            },
+            {
+                name: "Benji",
+                type: "dog",
+                age: "6",
+                imagePath: "Images/3.jpg",
+            },
+            {
+                name: "Boo",
+                type: "dog",
+                age: "9",
+                imagePath: "Images/4.jpg",
+            },
+            {
+                name: "Max",
+                type: "dog",
+                age: "10",
+                imagePath: "Images/5.jpg",
+            },
+            {
+                name: "Charlie",
+                type: "dog",
+                age: "13",
+                imagePath: "Images/6.jpg",
+            },
+            {
+                name: "Barry",
+                type: "dog",
+                age: "7",
+                imagePath: "Images/7.jpg"
+            },
+            {
+                name: "Ruby",
+                type: "cat",
+                age: "4",
+                imagePath: "Images/8.jpg"
+            },
+            {
+                name: "Jack",
+                type: "cat",
+                age: "9",
+                imagePath: "Images/9.jpg"
+            },
+            {
+                name: "Bailey",
+                type: "cat",
+                age: "3",
+                imagePath: "Images/10.jpg"
+            },
+            {
+                name: "Toby",
+                type: "cat",
+                age: "1",
+                imagePath: "Images/11.jpg"
+            },
+            {
+                name: "Chloe",
+                type: "cat",
+                age: "2",
+                imagePath: "Images/12.jpg"
+            },
+        ];
+
+        function createAnimalsElements(animalsList) {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = '';
+            animalsList.forEach(animal => {
+                const element = document.createElement("div");
+                const element2 = document.createElement("div");
+                const element3 = document.createElement("div");
+                const element4 = document.createElement("div");
+                const element5 = document.createElement("div");
+                const element6 = document.createElement("div");
+                element.setAttribute("id", animal.name.toLowerCase());
+                const image = document.createElement("img");
+                image.setAttribute("src", animal.imagePath);
+                image.setAttribute("class", "img");
+                element2.setAttribute("class", "img-bg");
+                element3.setAttribute("class", "img-bg-content");
+                element4.setAttribute("class", "img-bg-content-imie");
+                element5.setAttribute("class", "img-bg-content-wiek");
+                element5.setAttribute("class", "img-src");
+                element4.textContent = animal.name.toUpperCase();
+                element5.textContent = "Wiek: " + animal.age.toUpperCase() + " lata";
+
+                element.appendChild(element6);
+                element6.appendChild(image);
+                element.appendChild(element2);
+                element2.appendChild(element3);
+                element3.appendChild(element4);
+                element3.appendChild(element5);
+                gallery.appendChild(element);
+            });
+        }
+        createAnimalsElements(myAnimals);
+
+        window.onscroll = changeBg
+        window.onload = checkedFilter;
+
+        document.getElementById("imie").onkeyup = handleFiltering;
+
+        function handleFiltering() {
+            const shouldShowDogs = document.getElementById("dogs").checked;
+            const shouldShowCats = document.getElementById("cats").checked;
+            const enteredName = document.getElementById("imie").value;
+
+            const animalsToShow = new Array();
+            myAnimals.forEach(animal => {
+                const meetsTypeCriteria = (shouldShowDogs && animal.type === "dog") || (shouldShowCats && animal.type === "cat")
+                const meetsNameCriteria = (enteredName.length === 0) || (animal.name.toLowerCase().startsWith(enteredName.toLowerCase()));
+                if (meetsTypeCriteria && meetsNameCriteria) {
+                    animalsToShow.push(animal);
+                }
+            });
+            createAnimalsElements(animalsToShow);
+        }
+
+        function changeBg() {
+            if (document.documentElement.scrollTop > 0) {
+                document.getElementById("banner").style.display = "none";
+            } else {
+                document.getElementById("banner").style.display = "block";
+            }
+
+        };
+        if (localStorage.getItem('localSwitch') === undefined || localStorage.getItem('localSwitch') === null) {
+            var date = new Date();
+            var time = date.getHours();
+            if (time >= 7 && time <= 20) {
+                document.getElementById("switch").checked = "";
+                nightMode();
+            } else {
+                document.getElementById("switch").checked = "checked";
+                nightMode();
+            };
+        };
+        /*
+                function nightMode() {
+                    var isChecked = document.getElementById("switch").checked;
+                    if (isChecked === true) {
+                        document.getElementById("light-mode").className = "dark-mode";
+                        document.getElementById("savedDayTime").innerHTML = "";
+                        document.getElementById("savedDayTime").innerHTML = "Noc";
+                    } else {
+                        document.getElementById("light-mode").classList.remove("dark-mode");
+                        document.getElementById("savedDayTime").innerHTML = "";
+                        document.getElementById("savedDayTime").innerHTML = "Dzień";
+                    }
+
+                    localStorage.setItem('localSwitch', isChecked);
+                };
+
+                var mode = localStorage.getItem('localSwitch');
+                if (mode === "true") {
+                    document.getElementById("switch").checked = "checked";
+                    nightMode();
+                } else {
+                    document.getElementById("switch").checked = "";
+                    nightMode();
+                };
+        */
+        function checkedFilter() {
+            document.getElementById("dogs").checked = true;
+            document.getElementById("cats").checked = true;
+        }
+        var imgBg = document.getElementsByClassName("img-bg");
+        var allImages = document.getElementsByClassName("img");
+        for (i = 0; i < imgBg.length; i++) {
+            imgBg[i].addEventListener("click", showImage, false);
+        }
+
+        function showImage() {
+            //console.log("xd");
+            //console.log(this);
+            var parent = this.parentElement;
+            var parentContent = parent.children[0];
+            var imageSrc = parentContent.children[0];
+            var properSrc = imageSrc.src;
+            var child = this.children[0];
+            var name = child.children[0];
+            var age = child.children[1];
+            //console.log(parent);
+            //console.log(name);
+            //console.log(age);
+            console.log(imageSrc);
+            console.log(properSrc);
+            var image = document.createElement("img");
+            image.setAttribute("class", "displayedImage");
+            image.setAttribute("src", properSrc);
+            document.getElementById("display-wrap").innerHTML = "";
+            document.getElementById("display-wrap").appendChild(image);
+            document.getElementById("display-wrap").style.display = "flex";
+        }
+
+        function closeDisplay() {
+            document.getElementById("display-wrap").style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>
